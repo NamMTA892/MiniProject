@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{url.title}}</h1>
+<form action="{{url_for('download')}}" method="POST">
+    <select name="itag">
+        {% for i in url.streams.filter(progressive=True) %}
+            <option value="{{i.itag}}">{{i.resolution}}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Go Go</button>
+</form>
+{% endblock content %}
